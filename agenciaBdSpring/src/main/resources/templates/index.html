@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="primary" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="./css/index.css">
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="./img/logo-age.png" type="image/x-icon" />
+	<title> Agencia R.R.R | Melhores Viagens™ </title>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<div th:replace="base :: navlinks"> </div>
+	<!-- CORPO -->
+	<div class="p-1 p-md-1 mb-1 text-white rounded bd-navbar ">
+		<div class="col-md-12 px-0">
+			<h1 class="display-4 fst-italic"> Aqui você encontra as melhores ofertas de viagens...</h1>
+		</div>
+		<section>
+			<!-- menu pesquisa -->
+			<nav class="navbar navbar-expand-lg border-3 p-2 nav-menu text-body-color">
+				<from class="form-inline">
+					<div class="d-inline" style="padding-right: 30px;">
+						<label for="origem" class="form-label "></label>
+						<input class="form-inline" type="search" placeholder="Origem..." aria-label="origem"
+							id="txtOrigem" style="padding-right: 40px;" />
+					</div>
+					<div class="d-inline" style="padding-right: 30px;">
+						<label for="destino" class="form-label"></label>
+						<input class="form-inline" type="search" placeholder="Destino..." aria-label="destino"
+							id="txtDestino" style="padding-right: 40px;" />
+					</div>
+					<div class="form-check form-check-inline">
+						<label for="exampleInputDataIda" class="form-label">Data Ida:</label>
+						<input type="date" class="form-control" id="exampleInputDataIda">
+					</div>
+					<div class="form-check form-check-inline">
+						<label for="exampleInputDataIda" class="form-label">Data Volta:</label>
+						<input type="date" class="form-control" id="exampleInputDataVolta">
+					</div>
+					<div class="d-inline" style="padding-left: 40px;">
+						<a role="button" href="./criar-reserva">
+							<button class="btn my-2 my-sm-0 btn-primary" type="submit" id="buttonBusca">Buscar</button>
+						</a>
+					</div>
+					</form>
+			</nav><br>
+		</section>
+		<aside><!-- Carousel -->
+			<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
+						aria-label="Slide1"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide2"
+						class="active" aria-current="true"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+						class=""></button>
+				</div>
+				<div class="carousel-inner">
+					<!-- Primeiro slide -->
+					<div class="carousel-item carousel-item-start active">
+						<img src="./img/floripa1.png" alt="Promoções imperdíveis!" width="100%" height="100%">
+						<div class="container">
+							<div class="carousel-caption text-white text-start">
+								<h1>Promoções imperdíveis!</h1>
+								<p class="opacity-75">Florianópolis</p>
+								<p><a class="btn btn-lg btn-primary" href="/flori">Vejam mais
+										detalhes</a></p>
+							</div>
+						</div>
+					</div>
+					<!-- Segundo slide -->
+					<div>						
+						<div class="carousel-item carousel-item-next carousel-item-start">
+							<img src="./img/rio1.png" alt="Promoções imperdíveis!" width="100%" height="100%">
+							<div class="container">
+								<div class="carousel-caption text-white">
+									<h1>Promoções imperdíveis!</h1>
+									<p class="opacity-75">Rio de janeiro</p>
+									<p><a class="btn btn-lg btn-primary" href="/rio">Vejam mais
+											detalhes</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Terceiro slide -->
+					<div class="carousel-item">
+						<img src="./img/ssa1.png" alt="Promoções imperdíveis!" width="100%" height="100%">
+						<div class="container">
+							<div class="carousel-caption text-white text-end">
+								<h1>Promoções imperdíveis!</h1>
+								<p class="opacity-75"> Salvador
+								<p>
+								<p><a class="btn btn-lg btn-primary" href="/ssa">Vejam mais
+										detalhes</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Voltar</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Avançar</span>
+				</button>
+			</div>
+		</aside>
+	</div>		
+		<!-- RODAPÉ -->
+		<div th:replace="base :: footer"></div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+			crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="primary">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="../img/logo-age.png" type="image/x-icon" />
+
+	<title> Agencia R.R.R | Ajuda </title>
+</head>
+<body class="container-fluid bd-navbar">
+	<!-- Navbar -->
+	<div th:replace="base :: navlinks"> </div>
+	<!-- CORPO -->
+	<div class="bd-navbar">
+		<div class="p-1 p-md-1 mb-1 text-white rounded">
+			<div class="col-md-12 px-0">
+				<h1 class="display-4 fst-italic"> Aqui você encontra as melhores ofertas de viagens...</h1>
+			</div>
+			<!-- menu pesquisa -->
+			<section>
+				<nav class="navbar navbar-expand-lg border-3 p-2 nav-menu text-body-color">
+					<from class="form-inline">
+						<div class="d-inline" style="padding-right: 30px;">
+							<label for="origem" class="form-label "></label>
+							<input class="form-inline" type="search" placeholder="Origem..." aria-label="origem"
+								id="txtOrigem" style="padding-right: 40px;" />
+						</div>
+						<div class="d-inline" style="padding-right: 30px;">
+							<label for="destino" class="form-label"></label>
+							<input class="form-inline" type="search" placeholder="Destino..." aria-label="destino"
+								id="txtDestino" style="padding-right: 40px;" />
+						</div>
+						<div class="form-check form-check-inline">
+							<label for="exampleInputDataIda" class="form-label">Data Ida:</label>
+							<input type="date" class="form-control" id="exampleInputDataIda">
+						</div>
+						<div class="form-check form-check-inline">
+							<label for="exampleInputDataIda" class="form-label">Data Volta:</label>
+							<input type="date" class="form-control" id="exampleInputDataVolta">
+						</div>
+						<div class="d-inline" style="padding-left: 40px;">
+							<button class="btn my-2 my-sm-0 btn-primary" type="submit" id="buttonBusca">Buscar</button>
+						</div>
+						</form>
+				</nav><br>
+			</section>
+			<aside>
+				<h4 class="fs-4 text-center">Central de ajuda</h4>
+				<nav class="navbar navbar-light bg-light">
+					<from class="form-control">
+						<div class="d-inline">
+							<h2 class="fs-2">Como podemos te ajudar hoje?</h2>
+						</div>
+						<div class="form-control">
+							<textarea class="form-control" rows="8"></textarea>
+						</div>
+						</form>
+				</nav>
+			</aside><br>
+			
+			</div>
+		</div>
+		<!-- RODAPÉ -->
+		<div class="container" th:replace="base :: footer"></div>
+</body>
+
+</html>

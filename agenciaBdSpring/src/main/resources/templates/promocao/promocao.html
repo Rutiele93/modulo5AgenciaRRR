@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+		</script>
+
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="../css/promocao.css">
+
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="../img/logo-age.png" type="image/x-icon" />
+
+	<title> Agencia R.R.R | Promoção </title>
+</head>
+
+<body class="container-fluid bd-navbar">
+	<!-- Navbar -->
+	<div th:replace="~{base :: navlinks}"> </div>
+	<!-- inicio-->
+	<main class="container-fluid bd-navbar">
+		<div id="cor-fundo">
+			<div class="container-fluid card mb-3" id="paraBaixo">
+				<img src="../img/30off24.jpg" alt="destinos30%off">
+			</div>
+			<div class="row">
+				<div class="text-center">
+					<a th:href="@{/promocao/cadastrarPromocao}" class="w-100 btn btn-lg btn-primary">Cadastrar Promoção</a>
+				</div>
+			</div>
+			<!-- Section-->
+			<section class="py-5">
+				<div class="container px-4 px-lg-10 mt-5" th:each="promocao : ${promocao}">
+					<div class="card h-100">
+						<!-- Product image-->
+						<div class="d-flex justify-content-center align-items-center">
+							<img class="card-img-top" style="width: 500px; height: 400px;" th:src="|/promocao/imagem/${promocao.id}|"/>
+						</div>		
+						<!--Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h3 class="fw-bolder" th:text="${promocao.nomeDestinoProm}"></h3>
+								<!-- Detalhe produto-->
+								<p class="text-align">
+									<h3 class="text-muted text-decoration-line-through" th:text="${#numbers.formatCurrency(promocao.precoAnteriorProm)}"> </h3>
+								</p>
+								<h4 th:text="${#numbers.formatCurrency(promocao.precoUnitProm)}"></h4>
+								<h6 class="card-text">Passagem Aérea</h6>
+								<div>
+									<p class="text-muted text-decoration-line"><img src="../img/aviao.png" id="imgAviao"
+											width="30px" height="25px"> Detalhes Saída</p>
+									<div class="text-center text-muted">
+   									 <span style="display: inline-block; margin-right: 50px;">Data Partida=></span>									
+										<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${#temporals.format(promocao.dataIdaProm, 'dd-MM-yyyy')}"></h6>
+									</div>
+									<div class="text-center text-muted">
+   									 <span style="display: inline-block; margin-right: 50px;">Hora Partida=></span>	
+										<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${promocao.horaIdaProm}"></h6>
+									</div>
+								</div>
+								<br>
+								<div>
+									<div class="text-center text-muted">
+	   									<span style="display: inline-block; margin-right: 50px;">Duração VOO =></span>
+	    									<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${promocao.duracao}"></h6>
+									</div>
+									<div class="text-center text-muted">
+	   									<span style="display: inline-block; margin-right: 50px;">Condição do VOO =></span>
+											<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${promocao.condicaoProm}"></h6>
+									</div>
+									<div class="text-center text-muted">
+	   									<span style="display: inline-block; margin-right: 50px;">Categoria do VOO =></span>
+											<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${promocao.categoriaDestinoProm}"></h6>
+									</div>
+								</div>
+								<br>
+								<div>
+									<p class="text-muted text-decoration-line"><img src="../img/aviao.png" id="imgAviao"
+											width="30px" height="25px"> Detalhes Chegada
+									</p>
+									<div class="text-center text-muted">
+   									 	<span style="display: inline-block; margin-right: 50px;">Data Chegada=></span>	
+											<h6 style="display: inline-block; margin-right: 5px;" class="text-center"	th:text="${#temporals.format(promocao.dataChegadaProm, 'dd-MM-yyyy')}"></h6>
+									</div>
+									<div class="text-center text-muted">
+   									 	<span style="display: inline-block; margin-right: 50px;">Hora Chegada=></span>	
+										<h6 style="display: inline-block; margin-right: 5px;" class="text-center" th:text="${promocao.horaChegadaProm}"></h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ir para pacote-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto" th:href="@{/reserva/cadastrarReservaProm}">Reserva
+									Aqui...</a>
+							</div>
+							<div class="text-center">
+								<a th:href="@{/promocao/{id} (id=${promocao.id})}" class="btn btn-outline-dark mt-auto">Detalhes</a>
+								<a th:href="@{/promocao/{id}/editar (id=${promocao.id})}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/promocao/{id}/excluir (id=${promocao.id})}" class="btn btn-danger"
+									onclick="return confirm('Tem certeza que deseja excluir o Promoção?');">Excluir</a>
+							</div>								
+						</div>
+					</div>
+				</div>
+
+			</section>		
+		</div>		
+	</main>
+	<!-- RODAPÉ -->
+	<div th:replace="~{base :: footer}"></div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

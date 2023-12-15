@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="primary" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<!-- JS externo-->
+	<script src="./js/scripts.js"></script>
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="../css/style.css">
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="../img/logo-age.png" type="image/x-icon" />
+	<title>Agencia R.R.R | Reservas Cadastradas</title>
+</head>
+<!-- Navbar -->
+<div th:replace="base :: navlinks"> </div>
+<!-- CORPO -->
+<main class="container-fluid bd-navbar">
+	<!--	<div class="container-fluid px-4 px-lg-5 my-2 div-junta">-->
+	<!--		<div class="text-center text-white">-->
+	<!--			<h1 class="display-4 fw-bolder">-->
+	<!--				<a th:href="@{/destino/cadastrarDestino}" class="btn btn-primary">Cadastrar novo Destino</a>-->
+	<!--			</h1>-->
+	<!--		</div>-->
+	<!--	</div>-->
+	
+	<div class="container-fluid px-4 px-lg-5 my-2 div-junta">
+		<div class="text-center text-white">
+			<h1 class="display-4 fw-bolder">Listagem de Reservas...</h1>
+		</div>
+	</div>
+	<div class="card-body table-responsive p-0">
+				<div class="col-sm-12">
+		<table class="table table-hover text-nowrap">
+			<thead>
+				<tr class="table-info">
+					<th scope="col">#</th>
+					<th scope="col">Nome Destino</th>
+					<th scope="col">Preço Unitário</th>
+					<th scope="col">Data Ida</th>
+					<th scope="col">Hora Ida</th>
+					<th scope="col">Condição</th>
+					<th scope="col">Nome Cliente</th>
+					<th scope="col">Forma de Pagamento</th>
+					<th scope="col">Valor Total</th>
+					<th scope="col"> Qtd. Reservada</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="reserva : ${reservas}" class="table-info">
+					<th th:text="${reserva.id}"></th>
+					<td>
+						<a th:text="${reserva?.destinos?.nomeDestino}"></a>
+						<a th:text="${reserva?.promocao?.nomeDestinoProm}"></a>
+					</td>
+					<td>
+						<a th:text="${#numbers.formatCurrency(reserva?.destinos?.precoUnit)}"></a>
+						<a th:text="${#numbers.formatCurrency(reserva?.promocao?.precoUnitProm)}"></a>
+					</td>
+					<td>
+						<a th:text="${#temporals.format(reserva?.destinos?.dataIda, 'dd-MM-yyyy')}"></a>
+						<a th:text="${#temporals.format(reserva?.promocao?.dataIdaProm, 'dd-MM-yyyy')}"></a>
+					</td>
+					<td>
+						<a th:text="${reserva?.destinos?.horaIda}"></a>
+						<a th:text="${reserva?.promocao?.horaIdaProm}"></a>
+					</td> 
+					<td>
+						<a th:text="${reserva?.destinos?.condicao}"></a>
+						<a th:text="${reserva?.promocao?.condicaoProm}"></a>
+					</td>					
+					<td th:text="${reserva.clientes.nomeCliente}"></td>
+					<td th:text="${reserva.pagamento}"></td>
+					<td th:text="${#numbers.formatCurrency(reserva.precoTotal)}"></td>
+					<td th:text="${reserva.qtdReservada}"></td>
+					<td>
+						<div class="card-body table-responsive p-0">
+							<a type="button" data-toggle="popover" data-placement="top" data-content="Detalhes"
+								data-trigger="hover" class="btn btn-primary"
+								th:href="@{/reserva/{id} (id=${reserva.id})}">Detalhar
+							</a>
+							<a type="button" data-toggle="popover" data-placement="top" data-content="Editar"
+								data-trigger="hover" class="btn btn-warning"
+								th:href="@{/reserva/{id}/editar (id=${reserva.id})}">Editar
+							</a>
+							<a type="button" data-toggle="popover" data-placement="top" data-content="Remover"
+								data-trigger="hover" class="btn btn-danger"
+								th:href="@{/reserva/{id}/excluir (id=${reserva.id})}"
+								onclick="return confirm('Tem certeza que deseja excluir o Reserva?');">Excluir
+							</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</main>
+<!-- RODAPÉ -->
+<div th:replace="base :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+	crossorigin="anonymous"></script>
+</body>
+
+</html>

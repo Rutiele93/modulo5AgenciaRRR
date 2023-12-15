@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="primary" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<!-- JS externo-->
+	<script src="../js/scripts.js"></script>
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="../css/style.css">
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="../img/logo-age.png" type="image/x-icon" />
+	<title>Agencia R.R.R | Detalhar Promoção</title>
+</head>
+<!-- Navbar -->
+<div th:replace="base :: navlinks"> </div>
+<!-- CORPO -->
+<main class="container-fluid bd-navbar">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Detalhes do Promoção</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<h3 class="card-header bg-primary bg-gradient" th:text="${promocao.nomeDestinoProm}"></h3>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+							<p class="fw-bolder">
+								Condição: <span class="fs-5 text-center" th:text="${promocao.condicaoProm}"></span>
+							</p>
+							<p class="fw-bolder">
+								Data Ida: <span class="fs-5 text-center"
+									th:text="${#temporals.format(promocao.dataIdaProm, 'dd-MM-yyyy')}"></span>
+							</p>
+							<p class="fw-bolder">
+								Hora Ida: <span class="fs-5 text-center" th:text="${promocao.horaIdaProm}"></span>
+							</p>
+							<p class="fw-bolder">
+								Data Chegada: <span class="fs-5 text-center"
+									th:text="${#temporals.format(promocao.dataChegadaProm, 'dd-MM-yyyy')}"></span>
+							</p>
+							<p class="fw-bolder">
+								Hora Chegada: <span class="fs-5 text-center" th:text="${promocao.horaChegadaProm}"></span>
+							</p>
+							<p class="fw-bolder">
+								Categoria: <span class="fs-5 text-center" th:text="${promocao.categoriaDestinoProm}"></span>
+							</p>
+							<p class="fw-bolder">
+								Quant Disponível: <span class="fs-5 text-center"
+									th:text="${promocao.qtdDisponivelProm}"></span>
+							</p>
+							<p class="fw-bolder">
+								Preco Unitário: R$ <span class="fs-5 text-center" th:text="${promocao.precoUnitProm}"></span>
+							</p>
+							<div class="text-center text-white">
+								<h1 class="display-4 fw-bolder">
+									<a th:href="@{/promocao/cadastrarPromocao}" class="btn btn-primary">Cadastrar Promoção</a>
+								</h1>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<img alt="Destination Image" width="100%" height="100%" style="padding-right: 100px; "
+								th:src="|/promocao/imagem/${promocao.id}|" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<!-- RODAPÉ -->
+<div th:replace="base :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+	crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="primary" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Framework Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<!-- Biblioteca JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<!-- JS externo-->
+	<script src="./js/scripts.js"></script>
+	<!-- CSS Externo -->
+	<link rel="stylesheet" href="../css/style.css">
+	<!-- Fivecon -->
+	<link rel="shortcut icon" href="../img/logo-age.png" type="image/x-icon" />
+	<title>Agencia R.R.R | Destinos Cadastrados</title>
+</head>
+<!-- Navbar -->
+<div th:replace="base :: navlinks"> </div>
+<!-- CORPO -->
+<div class="container mt-8  bd-navbar" id="paraBaixo">
+	<div class="row justify-content-center bd-navbar">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="text-center">Destino</h4>
+				</div>
+				<div class="card-body bd-navbar">
+					<form method="POST" th:object="${destinos}" enctype="multipart/form-data">				
+						<div class="mb-3">
+							<label for="nome" class="form-label">Nome Destino</label>
+							<input type="text" class="form-control" id="nome" th:field="*{nomeDestino}" required>
+						</div>
+						<!-- input categoria -->
+						<div class="mb-3">
+							<div class="col d-flex justify-content-center">
+								  <label for="categoriaDestino" class="form-label">Categoria</label>
+							        <select class="form-check-label" id="categoria" name="categoria" th:field="*{categoriaDestino}">
+							            <option class="bi-star-fill" value="A">A</option>
+							            <option class="bi-star-fill" value="B">B</option>
+							            <option class="bi-star-fill" value="C">C</option>
+							        </select>							
+							</div>
+						</div>
+						<!-- radio input condição -->
+						<div class="mb-3">
+							<div class="col d-flex justify-content-center">
+								<!-- Categoria -->
+								<div class="form-check">
+								  <label for="condicao" class="form-label">Condição</label>
+								  	 <select class="form-check-label" id="condicao" name="condicao" th:field="*{condicao}">
+							            <option value="VOO DIRETO">VOO DIRETO</option>
+							            <option value="COM ESCALA">COM ESCALA</option>							            
+							        </select>						
+								</div>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="text" class="form-label">Quantidade Disponivel</label>
+							<input type="text" class="form-control" id="quant" th:field="*{qtdDisponivel}" required>
+						</div>
+						<div class="mb-3">
+							<label for="text" class="form-label">Preço Unitario</label>
+							<input type="text" class="form-control" id="preco" th:field="*{precoUnit}" required>
+						</div>
+						<div class="mb-3">
+							<label for="date" class="form-label">Data Ida</label>
+							<input type="date" class="form-control" id="DataIda" th:field="*{dataIda}" required>
+						</div>
+						<div class="mb-3">
+							<label for="horaIda" class="form-label">Hora Ida</label>
+							<input type="text" class="form-control" id="horaIda" th:field="*{horaIda}" required>
+						</div>
+						<div class="mb-3">
+							<label for="date" class="form-label">Data Chegada</label>
+							<input type="date" class="form-control" id="dataChegada" th:field="*{dataChegada}" required>
+						</div>
+						<div class="mb-3">
+							<label for="horaChegada" class="form-label">Hora Chegada</label>
+							<input type="text" class="form-control" id="horaChegada" th:field="*{horaChegada}" required>
+						</div>
+						<div class="mb-3">
+							<label for="imagem" class="form-label">Imagem Destino</label>
+							<input type="file" class="form-control" id="imagem" name="fileDestino">
+						</div>
+				</div>
+			</div>
+			<!-- Botões de fim Destino-->
+			<div class="nav-item col-12 col-lg-auto d-grid gap-2 h3 mb-3 fw-normal bd-navbar">
+				<button class="w-100 btn btn-lg btn-primary" type="submit" onclick="exibirAlertaDestino()">
+					Concluir Cadastro Destino...</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<!-- RODAPÉ -->
+<div class="container" th:replace="base :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+	crossorigin="anonymous"></script>
+</body>
+
+</html>
